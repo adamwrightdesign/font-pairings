@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Font Pairings | Adam Wright Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap">
+<style>
+:root{
+  color-scheme: light;
+  /* AWD brand (matches Contrast Grid) */
+  --primary:#F05B33; --primary-dark:#CB4C2B; --primary-light:#FDE5DE;
+  --secondary:#0877CD; --secondary-dark:#094168; --secondary-light:#E6F1FA; --secondary-alt-light:#9AC9EB;
+  --title:#0F456C;
+  --extra-light:#F5F5F5; --light:#EAEAEA; --light-1:#B8B8B8; --light-3:#555555; --dark:#252525; --white:#FFFFFF;
+  --fail:#B42318;
+  --heading:"Barlow", "DM Sans", system-ui, sans-serif;
+  --body:"DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radius:10px;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+body{margin:0;background:var(--extra-light);color:var(--dark);font:400 16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:var(--secondary)}
+:focus-visible{outline:3px solid var(--primary);outline-offset:2px}
+button,input,select{font:inherit;color:inherit}
+.wrap{max-width:1360px;margin:0 auto;padding:0 28px}
+@media (max-width:600px){.wrap{padding:0 18px}}
+
+/* Hero */
+.hero{background:var(--white);padding:44px 0 40px;border-bottom:1px solid var(--light)}
+.logo{display:inline-block;margin:0 0 24px}
+.logo svg{height:42px;width:auto;display:block}
+.hero h1{font:700 clamp(2.6rem,5vw,4rem)/1.05 var(--heading);letter-spacing:-.01em;color:var(--title);margin:0}
+.hero p{max-width:62ch;margin:14px 0 0;font-size:1.1rem;color:var(--dark)}
+
+/* Layout */
+.app{display:grid;grid-template-columns:340px minmax(0,1fr);gap:24px;align-items:start;padding:28px 0 40px}
+@media (min-width:961px) and (min-height:860px){.app aside{position:sticky;top:16px}}
+@media (max-width:960px){.app{grid-template-columns:1fr}}
+.panel{background:var(--white);border:1px solid var(--light);border-radius:var(--radius);padding:20px}
+.panel + .panel{margin-top:16px}
+.panel h2{font:700 22px/1.15 var(--heading);margin:0 0 4px;color:var(--dark)}
+.panel .hint{margin:0 0 14px;color:var(--light-3);font-size:14.5px}
+
+/* Picks */
+.panel.picks-panel{background:var(--secondary-dark);border-color:var(--secondary-dark);padding:20px 18px}
+.picks-panel h2{color:var(--white)}
+.picks-panel .hint{color:var(--secondary-light);margin-bottom:12px}
+.picks{display:grid;gap:6px;list-style:none;margin:0;padding:0}
+@media (min-width:600px) and (max-width:960px){.picks{grid-template-columns:1fr 1fr}}
+.pick{width:100%;text-align:left;background:transparent;border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:9px 12px;cursor:pointer;display:block;color:var(--white)}
+.pick:hover{border-color:var(--secondary-alt-light)}
+.pick[aria-pressed="true"],.pick[aria-pressed="true"]:hover{background:rgba(255,255,255,.1);border-color:var(--primary);box-shadow:inset 0 0 0 1px var(--primary)}
+.pick-head{display:block;font-size:20px;line-height:1.15;color:var(--white)}
+.pick-body{display:block;font-size:14px;line-height:1.35;color:var(--secondary-light);margin-top:2px}
+.pick-for{display:block;font:400 12.5px/1.35 var(--body);color:var(--secondary-alt-light);margin-top:3px}
+.picks-panel :focus-visible{outline-color:var(--primary)}
+
+/* Controls */
+.field{display:block;margin-bottom:16px}
+.field:last-child{margin-bottom:0}
+.field label,.field .lbl{display:block;font-size:14px;font-weight:500;margin-bottom:5px;color:var(--dark)}
+select{width:100%;font-size:15px;background:var(--white);border:1px solid var(--light-1);border-radius:8px;padding:9px 12px}
+select:focus{border-color:var(--secondary);outline:2px solid var(--secondary-light)}
+.font-msg{font-size:13px;margin:5px 0 0;min-height:0;color:var(--light-3)}
+.font-msg.err{color:var(--fail)}
+.font-msg:empty{display:none}
+.range-row{display:flex;align-items:center;gap:10px}
+.range-row input{flex:1;accent-color:var(--secondary-dark)}
+.range-row output{font-size:14px;color:var(--light-3);min-width:44px;text-align:right}
+.scale-note{font-size:13px;color:var(--light-3);margin:4px 0 0}
+.btn{border-radius:8px;padding:9px 16px;font:600 15px var(--heading);letter-spacing:.01em;cursor:pointer;background:var(--white);color:var(--dark);border:1px solid var(--light-1)}
+.btn:hover{border-color:var(--dark)}
+.btn.copy{display:inline-flex;align-items:center;gap:8px;background:var(--secondary-light);color:var(--secondary-dark);border-color:var(--secondary-alt-light)}
+.btn.copy:hover{border-color:var(--secondary-dark)}
+.btn.copy svg{width:16px;height:16px;flex:none}
+.custom{margin-bottom:14px}
+.custom-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;margin-bottom:14px}
+.custom-top h2,.custom-top .hint{margin:0}
+.row-fonts{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px;align-items:start}
+.row-opts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px 20px;margin-top:16px;padding-top:16px;border-top:1px solid var(--light)}
+.custom .field{margin:0}
+.swap{margin-top:27px;width:42px;height:42px;padding:0;display:grid;place-items:center}
+.swap svg{width:18px;height:18px}
+@media (max-width:1100px){.row-opts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.row-fonts{grid-template-columns:1fr}.swap{margin:0;width:100%;height:auto;padding:8px}.row-opts{grid-template-columns:1fr}}
+
+/* Toolbar */
+.toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:14px}
+.tabs{display:inline-flex;flex-wrap:wrap;background:var(--white);border:1px solid var(--light-1);border-radius:9px;padding:3px;gap:2px}
+.tabs button{border:0;background:none;border-radius:6px;padding:7px 14px;font:600 15px var(--heading);cursor:pointer;color:var(--light-3)}
+.tabs button[aria-selected="true"],.tabs button[aria-pressed="true"]{background:var(--secondary-dark);color:var(--white)}
+.tabs.small button{padding:5px 11px;font-size:14px}
+.preview-label{font:600 16px var(--heading);color:var(--dark)}
+
+/* Note */
+.note{background:var(--secondary-light);border:1px solid var(--secondary-alt-light);border-radius:12px;padding:22px 26px;margin-bottom:18px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:16px 36px;align-items:center}
+.now-label{display:block;font:600 15px var(--heading);color:var(--secondary-dark)}
+.now-fonts{display:grid;grid-template-columns:auto minmax(0,1fr);gap:6px 16px;align-items:baseline;margin:10px 0 0}
+.now-role{font:500 13px var(--body);color:var(--light-3);margin:0}
+.now-name{margin:0;font-size:32px;line-height:1.15;color:var(--title);overflow-wrap:anywhere}
+.now-name.is-body{font-size:22px;color:var(--dark)}
+.note-for{display:block;font:600 16px/1.3 var(--heading);color:var(--secondary-dark)}
+.note-text{margin:6px 0 0;color:var(--dark);font-size:15px}
+@media (max-width:760px){.note{grid-template-columns:1fr;padding:18px 20px}.now-name{font-size:27px}.now-name.is-body{font-size:21px}}
+
+/* Preview frame */
+.frame{border:1px solid var(--light);border-radius:14px;overflow:hidden;background:#fff}
+
+/* Preview site */
+.site{--head:Georgia,serif;--body:system-ui,sans-serif;--hw:700;--bsize:17;--blh:1.6;--h1:56;--h2:34;--h3:22;
+  background:#fff;color:#1B2430;font-family:var(--body);font-size:calc(var(--bsize) * 1px);line-height:var(--blh);container-type:inline-size;min-height:440px}
+.site h1,.site h2,.site h3,.site .s-brand,.site blockquote{font-family:var(--head);font-weight:var(--hw);color:#14202C;margin:0;line-height:1.12;text-wrap:balance}
+.site h1{font-size:min(calc(var(--h1) * 1px), 10cqi)}
+.site h2{font-size:min(calc(var(--h2) * 1px), 8cqi)}
+.site h3{font-size:calc(var(--h3) * 1px);line-height:1.2}
+.s-nav{display:flex;align-items:center;gap:24px;padding:18px clamp(20px,5cqi,48px);border-bottom:1px solid #E4E9EE}
+.site .s-brand{font-size:1.2em;margin-right:auto;line-height:1.2}
+.s-links{display:flex;gap:22px;font-size:.92em;color:#4F5B68}
+.s-btn{display:inline-block;background:#0B3F66;color:#fff;padding:.75em 1.3em;border-radius:6px;font-weight:600;font-size:.95em;line-height:1.2}
+.s-btn-sm{padding:.6em 1em;font-size:.85em}
+.s-btn-ghost{background:transparent;color:#0B3F66;box-shadow:inset 0 0 0 1.5px #0B3F66}
+.s-hero{padding:clamp(40px,9cqi,96px) clamp(20px,5cqi,48px)}
+.site .s-hero h1{max-width:17ch}
+.s-lead{font-size:1.15em;color:#4A5663;max-width:58ch;margin:1.1em 0 0}
+.s-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:2em}
+@container (max-width:620px){.s-links,.s-nav .s-btn-sm{display:none}}
+
+.s-services{padding:clamp(36px,7cqi,80px) clamp(20px,5cqi,48px)}
+.s-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(16px,4cqi,56px);align-items:start}
+.s-split p{margin:0;color:#4A5663;font-size:1.05em}
+.s-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:clamp(28px,5cqi,48px)}
+.s-card{background:#F2F5F8;border-radius:10px;padding:24px}
+.site .s-card h3{margin-bottom:.45em}
+.s-card p{margin:0;color:#4A5663;font-size:.95em}
+@container (max-width:680px){.s-split,.s-cards{grid-template-columns:1fr}}
+
+.s-article{padding:clamp(36px,7cqi,72px) clamp(20px,5cqi,48px) clamp(44px,8cqi,88px);max-width:780px;margin:0 auto}
+.s-meta{font-size:.85em;color:#6A7684;margin:0 0 .9em}
+.s-byline{display:flex;align-items:center;gap:12px;margin:1.4em 0 0;font-size:.9em;color:#4A5663}
+.s-avatar{width:40px;height:40px;border-radius:50%;background:#D5DEE7;flex:none}
+.s-byline strong{display:block;color:#1B2430;font-weight:600}
+.s-feature{aspect-ratio:16/7;border-radius:12px;background:linear-gradient(135deg,#DCE5EE,#C7D4E1);margin:2em 0 .5em}
+.s-article p{margin:1em 0 0}
+.s-article .s-lead{margin-top:1.4em}
+.site .s-article h2{margin-top:1.7em}
+.site .s-article h3{margin-top:1.6em}
+.s-article ul{margin:.8em 0 0;padding-left:1.3em}
+.s-article li{margin:.4em 0;padding-left:.2em}
+.s-article li::marker{color:#0B3F66}
+.s-pull{margin:1.8em 0 .4em;padding:.2em 0 .2em 1.1em;border-left:4px solid #0B3F66}
+.site .s-pull p{font-family:var(--head);font-weight:var(--hw);font-size:calc(var(--h3) * 1.15px);line-height:1.3;color:#14202C;margin:0;text-wrap:balance}
+
+.s-quote{background:#0F2E47;padding:clamp(48px,9cqi,100px) clamp(20px,5cqi,48px);min-height:440px;display:flex;flex-direction:column;justify-content:center}
+.site .s-quote blockquote{color:#fff;font-size:min(calc(var(--h2) * 1px), 7cqi);line-height:1.25;max-width:30ch}
+.s-cite{margin:1.4em 0 0;color:#BFD0E0;font-size:.95em}
+
+/* Code */
+.code-panel{margin-top:16px}
+.code-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:12px}
+.code-top .hint{margin:0}
+.code-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:18px 0 8px}
+.code-head h3{margin:0;font:600 16px var(--heading)}
+pre{margin:0;background:var(--extra-light);border:1px solid var(--light);border-radius:8px;padding:14px;overflow-x:auto;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:13px;line-height:1.55;color:var(--dark);white-space:pre}
+.tip{font-size:14px;color:var(--light-3);margin:14px 0 0}
+.site-footer{background:var(--secondary-dark);color:var(--white);margin-top:24px;padding:48px 0 32px}
+.site-footer .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:center}
+.site-footer h2{font:700 2rem/1.1 var(--heading);margin:0}
+.site-footer p{margin:10px 0 0;color:#E6F1FA;max-width:52ch}
+.site-footer a{color:var(--secondary-alt-light)}
+.site-footer .cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end}
+.btn-primary{display:inline-block;text-decoration:none;border-radius:8px;padding:11px 20px;font:600 1rem var(--heading);letter-spacing:.01em;background:var(--primary-dark);color:var(--white)!important}
+.btn-primary:hover{background:#A93D21}
+.fine{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;border-top:1px solid rgba(255,255,255,.15);padding-top:24px;font-size:.9rem;color:#E6F1FA}
+.fine svg{height:34px;width:auto;display:block}
+@media (max-width:760px){.site-footer .wrap{grid-template-columns:1fr}.site-footer .cta{justify-content:flex-start}}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--dark);color:var(--white);padding:9px 16px;border-radius:8px;font-size:14px;font-weight:500;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.show{opacity:1}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <a class="logo" href="https://adamwrightdesign.com/" target="_blank" rel="noopener" aria-label="Adam Wright Design">
+      <svg viewBox="0 0 60 44" aria-hidden="true"><path d="M0 44 14 0h10L10 44z" fill="#0877CD"/><path d="M14 44 28 0h10L24 44z" fill="#094168"/><path d="M28 44 42 0h4a18 22 0 0 1 0 44z" fill="#F05B33"/></svg>
+    </a>
+    <h1>Font Pairings</h1>
+    <p>Preview Google Fonts pairings in real website layouts. Choose your own fonts, or pick from one of Adam's top pairing picks, then grab the code to implement it.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="app">
+    <aside>
+      <section class="panel picks-panel" aria-labelledby="picks-h">
+        <h2 id="picks-h">Adam's Picks</h2>
+        <p class="hint">Pairings I reach for on real client projects, with notes on where each one works best.</p>
+        <ul class="picks" id="picks"></ul>
+      </section>
+
+    </aside>
+
+    <main>
+      <section class="panel custom" aria-labelledby="custom-h">
+        <div class="custom-top">
+          <h2 id="custom-h">Customize</h2>
+          <p class="hint">Choose a heading and body font from the Google Fonts library.</p>
+        </div>
+        <div class="row-fonts">
+          <div class="field">
+            <label for="head">Heading font</label>
+            <select id="head"></select>
+          </div>
+          <button class="btn swap" id="swap" type="button" aria-label="Swap heading and body fonts" title="Swap heading and body fonts">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4 3 8l4 4"/><path d="M3 8h14"/><path d="m17 20 4-4-4-4"/><path d="M21 16H7"/></svg>
+          </button>
+          <div class="field">
+            <label for="body">Body font</label>
+            <select id="body"></select>
+          </div>
+        </div>
+        <div class="row-opts">
+          <div class="field"><label for="hw">Heading weight</label><select id="hw"></select></div>
+          <div class="field">
+            <span class="lbl" id="hsize-lbl">Heading size</span>
+            <div class="range-row"><input type="range" id="hsize" min="32" max="80" step="2" aria-labelledby="hsize-lbl"><output id="hsize-out" for="hsize"></output></div>
+            <p class="scale-note" id="scale-note"></p>
+          </div>
+          <div class="field">
+            <span class="lbl" id="size-lbl">Body size</span>
+            <div class="range-row"><input type="range" id="size" min="15" max="20" step="1" aria-labelledby="size-lbl"><output id="size-out" for="size"></output></div>
+          </div>
+          <div class="field"><label for="set">Sample content</label><select id="set"></select></div>
+        </div>
+      </section>
+
+      <div class="note" id="note" aria-live="polite"></div>
+
+      <div class="toolbar">
+        <span class="preview-label" id="preview-lbl">Preview As</span>
+        <div class="tabs" role="tablist" aria-labelledby="preview-lbl" id="layouts"></div>
+      </div>
+      <div class="frame"><div class="site" id="site" role="tabpanel"></div></div>
+
+      <section class="panel code-panel" aria-labelledby="code-h">
+        <div class="code-top">
+          <div>
+            <h2 id="code-h">Use this pairing</h2>
+            <p class="hint">Add the link to your site's head, then apply the fonts with the CSS below.</p>
+          </div>
+          <div class="tabs small" id="units" aria-label="CSS units">
+            <button type="button" data-u="px" aria-pressed="true">px</button>
+            <button type="button" data-u="rem" aria-pressed="false">rem</button>
+            <button type="button" data-u="em" aria-pressed="false">em</button>
+          </div>
+        </div>
+        <div class="code-head"><h3>Google Fonts link</h3><button class="btn copy" type="button" data-copy="embed"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5"/></svg>Copy link</button></div>
+        <pre id="embed"></pre>
+        <div class="code-head"><h3>CSS</h3><button class="btn copy" type="button" data-copy="css"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>Copy CSS</button></div>
+        <pre id="css"></pre>
+        <p class="tip">Tip: for live sites, host the fonts locally instead of loading them from Google. It's faster and avoids sending visitor data to a third party.</p>
+      </section>
+    </main>
+  </div>
+</div>
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <h2>Want more like this?</h2>
+      <p>Design to Dollars is a free newsletter with practical design tips that keep visitors interested, engaged, and ready to buy.</p>
+    </div>
+    <div class="cta">
+      <a class="btn-primary" href="https://adamwrightdesign.com/design-to-dollars/" target="_blank" rel="noopener">Get Design to Dollars</a>
+    </div>
+    <div class="fine">
+      <a href="https://adamwrightdesign.com/" target="_blank" rel="noopener" aria-label="Adam Wright Design"><svg viewBox="0 0 60 44" aria-hidden="true"><path d="M0 44 14 0h10L10 44z" fill="#9AC9EB"/><path d="M14 44 28 0h10L24 44z" fill="#FFFFFF"/><path d="M28 44 42 0h4a18 22 0 0 1 0 44z" fill="#F05B33"/></svg></a>
+      <span>© <span id="yr"></span> Adam Wright Design LLC. Fonts served by Google Fonts.</span>
+    </div>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status"></div>
+<script>
+/* Google Fonts library snapshot (October 2026): Latin fonts only, with icon sets,
+   placeholder fonts, and non-Latin script families removed. Format: Family|category|weights */
+const FONT_DATA = "Roboto|s|123456789~Open Sans|s|345678~Google Sans|s|4567~Inter|s|123456789~Poppins|s|123456789~Lato|s|13479~Montserrat|s|123456789~Oswald|s|234567~Noto Sans|s|123456789~DM Sans|s|123456789~Raleway|s|123456789~Roboto Condensed|s|123456789~Nunito Sans|s|23456789~Roboto Mono|m|1234567~Arimo|s|4567~Roboto Slab|r|123456789~Rubik|s|3456789~Manrope|s|2345678~Kanit|s|123456789~Outfit|s|123456789~Merriweather|r|3456789~Archivo Black|s|4~Nunito|s|23456789~Work Sans|s|123456789~Lora|r|4567~Playfair Display|r|456789~Plus Jakarta Sans|s|2345678~Quicksand|s|34567~Figtree|s|3456789~Bebas Neue|s|4~Archivo|s|123456789~Mulish|s|23456789~Ubuntu|s|3457~Source Sans 3|s|23456789~Bricolage Grotesque|s|2345678~IBM Plex Sans|s|1234567~Jost|s|123456789~Karla|s|2345678~Saira|s|123456789~Fira Sans|s|123456789~Titillium Web|s|234679~Share Tech|s|4~PT Sans|s|47~Smooch Sans|s|123456789~Cormorant Garamond|r|34567~JetBrains Mono|m|12345678~Libre Baskerville|r|4567~PT Serif|r|47~Inter Tight|s|123456789~Fjalla One|s|4~Barlow|s|123456789~IBM Plex Mono|m|1234567~Instrument Serif|r|4~Dancing Script|h|4567~Prompt|s|123456789~Inconsolata|m|23456789~Public Sans|s|123456789~Anton|s|4~EB Garamond|r|45678~Lobster Two|d|47~Space Grotesk|s|34567~Black Ops One|d|4~Lexend|s|123456789~Assistant|s|2345678~Noto Serif|r|123456789~Hind Siliguri|s|34567~Cabin|s|4567~Heebo|s|123456789~Urbanist|s|123456789~DM Serif Display|r|4~Caveat|h|4567~Geist|s|123456789~Alfa Slab One|d|4~Roboto Flex|s|4~Source Code Pro|m|23456789~Oxygen|s|347~Red Hat Display|s|3456789~Dosis|s|2345678~Rajdhani|s|34567~Fredoka|s|34567~Barlow Condensed|s|123456789~Libre Franklin|s|123456789~Source Serif 4|r|23456789~Instrument Sans|s|4567~Cinzel|r|456789~Google Sans Flex|s|123456789~Zeyada|h|4~Bungee|d|4~Chakra Petch|s|34567~Sora|s|12345678~Josefin Sans|s|1234567~Tajawal|s|2345789~Barlow Semi Condensed|s|123456789~Cairo|s|23456789~Fraunces|r|123456789~Geist Mono|m|123456789~Lilita One|d|4~Teko|s|34567~Bitter|r|123456789~Mukta|s|2345678~DM Mono|m|345~Bodoni Moda|r|456789~Schibsted Grotesk|s|456789~Space Mono|m|47~Abel|s|4~Asap|s|123456789~Questrial|s|4~Shadows Into Light|h|4~Epilogue|s|123456789~Satisfy|h|4~Albert Sans|s|123456789~Changa One|d|4~Blinker|s|12346789~Be Vietnam Pro|s|123456789~Almarai|s|3478~Abril Fatface|d|4~ABeeZee|s|4~Alegreya Sans|s|1345789~Syne|s|45678~IBM Plex Serif|r|1234567~Overpass|s|123456789~Spectral|r|2345678~Onest|s|123456789~Great Vibes|h|4~Exo 2|s|123456789~Varela Round|s|4~League Spartan|s|123456789~Cormorant|r|34567~Saira Condensed|s|123456789~Baloo 2|d|45678~Newsreader|r|2345678~Hind|s|34567~Yanone Kaffeesatz|s|234567~Exo|s|123456789~Merriweather Sans|s|345678~Frank Ruhl Libre|r|3456789~Orbitron|s|456789~Geologica|s|123456789~Ramabhadra|s|4~Crimson Text|r|467~Oleo Script|d|47~Indie Flower|h|4~Pacifico|h|4~Roboto Serif|r|123456789~Rethink Sans|s|45678~Sofia Sans|s|123456789~Encode Sans|s|123456789~Slabo 27px|r|4~Arvo|r|47~Atkinson Hyperlegible|s|47~Amiri|r|47~Hanken Grotesk|s|123456789~Hind Madurai|s|34567~Lobster|d|4~PT Sans Narrow|s|47~Catamaran|s|123456789~Comfortaa|d|34567~Fira Sans Condensed|s|123456789~Domine|r|4567~Luckiest Guy|d|4~Delius|h|4~Literata|r|23456789~Signika|s|34567~Andada Pro|r|45678~Maven Pro|s|456789~Righteous|d|4~Viga|s|4~Red Hat Text|s|34567~Gravitas One|d|4~Montserrat Alternates|s|123456789~Cardo|r|47~Baskervville|r|4567~News Cycle|s|47~Bree Serif|r|4~Archivo Narrow|s|4567~Yellowtail|h|4~Noto Sans Display|s|123456789~Zilla Slab|r|34567~Aleo|r|123456789~Play|s|47~Readex Pro|s|234567~DM Serif Text|r|4~Paytone One|s|4~IBM Plex Sans Condensed|s|1234567~Russo One|s|4~Acme|s|4~Fugaz One|d|4~Lexend Deca|s|123456789~Rowdies|d|347~Hammersmith One|s|4~Comic Neue|h|347~Golos Text|s|456789~Marcellus|r|4~Bangers|d|4~Noticia Text|r|47~Libre Caslon Text|r|47~VT323|m|4~Allura|h|4~Courgette|h|4~Sanchez|r|4~Noto Sans Mono|s|123456789~Sacramento|h|4~Fira Mono|m|457~Permanent Marker|h|4~Patrick Hand|h|4~Changa|s|2345678~Unbounded|s|23456789~Quantico|s|47~STIX Two Text|r|4567~Original Surfer|d|4~Yantramanav|s|134579~Crete Round|r|4~PT Sans Caption|s|47~Chelsea Market|d|4~Commissioner|s|123456789~Antonio|s|1234567~Sarabun|s|12345678~Kalam|h|347~Sofia Sans Condensed|s|123456789~Didact Gothic|s|4~Fira Code|m|34567~Gruppo|s|4~Gloria Hallelujah|h|4~Titan One|d|4~Unna|r|47~Ubuntu Condensed|s|4~Courier Prime|m|47~Radio Canada|s|34567~Poiret One|d|4~Rokkitt|r|123456789~Josefin Slab|r|1234567~Playfair Display SC|r|479~Vollkorn|r|456789~Faustina|r|345678~Rock Salt|h|4~Gilda Display|r|4~Homemade Apple|h|4~Pinyon Script|h|4~Press Start 2P|d|4~Gabarito|d|456789~Advent Pro|s|123456789~PT Mono|m|4~Amaranth|s|47~Crimson Pro|r|23456789~Tangerine|h|47~Architects Daughter|h|4~Biryani|s|2346789~Playfair|r|3456789~Signika Negative|s|34567~Forum|d|4~Cookie|h|4~Quattrocento Sans|s|47~Bai Jamjuree|s|234567~Vazirmatn|s|123456789~Reenie Beanie|h|4~Cormorant Infant|r|34567~League Gothic|s|4~Encode Sans Condensed|s|123456789~Damion|h|4~Rammetto One|d|4~Alumni Sans|s|123456789~Andika|s|47~El Messiri|s|4567~Krub|s|234567~Berkshire Swash|h|4~Fustat|s|2345678~Gelasio|r|4567~Tinos|r|47~Racing Sans One|d|4~Prata|r|4~Staatliches|d|4~Caveat Brush|h|4~Google Sans Code|m|345678~Alegreya|r|456789~Abhaya Libre|r|45678~Monoton|d|4~Yeseva One|d|4~Antic Slab|r|4~Italianno|h|4~Lusitana|r|47~Tenor Sans|s|4~Parisienne|h|4~Alata|s|4~Mona Sans|s|23456789~Goldman|d|47~Chivo|s|123456789~Cinzel Decorative|d|479~Actor|s|4~Kumbh Sans|s|123456789~Hind Guntur|s|34567~Nothing You Could Do|h|4~GFS Didot|r|4~Old Standard TT|r|47~Syncopate|s|47~Libre Bodoni|r|4567~Patua One|d|4~Merienda|h|3456789~Handlee|h|4~Radio Canada Big|s|4567~Atkinson Hyperlegible Next|s|2345678~Unica One|d|4~Lalezar|s|4~Kaushan Script|h|4~Sorts Mill Goudy|r|4~Noto Serif Display|r|123456789~Special Elite|d|4~Mrs Saint Delafield|h|4~Creepster|d|4~Mr Dafoe|h|4~Monda|s|4567~Besley|r|456789~Mada|s|23456789~Rufina|r|47~Sriracha|h|4~Afacad|s|4567~Khand|s|34567~Comic Relief|d|47~Cantarell|s|47~Saira Semi Condensed|s|123456789~Georama|s|123456789~Passion One|d|479~Oxanium|d|2345678~Hind Vadodara|s|34567~Calistoga|d|4~Arapey|r|4~Lexend Giga|s|123456789~REM|s|123456789~Quattrocento|r|47~Ropa Sans|s|4~Alice|r|4~Bowlby One SC|d|4~Rubik Mono One|s|4~Cousine|m|47~Fira Sans Extra Condensed|s|123456789~Bad Script|h|4~Sen|s|45678~Alegreya Sans SC|s|1345789~Martel|r|2346789~Secular One|s|4~Amita|h|47~Alexandria|s|123456789~Bowlby One|d|4~Share Tech Mono|m|4~Funnel Sans|s|345678~Philosopher|s|47~Marck Script|h|4~Wix Madefor Display|s|45678~Taviraj|r|123456789~Proza Libre|s|45678~Palanquin|s|1234567~Francois One|s|4~Sofia Sans Extra Condensed|s|123456789~Palanquin Dark|s|4567~Red Hat Mono|m|34567~Audiowide|d|4~Sofia|h|4~Rozha One|r|4~Wix Madefor Text|s|45678~Eczar|r|45678~Ultra|r|4~Gudea|s|47~Neuton|r|23478~La Belle Aurore|h|4~Knewave|d|4~Cabin Condensed|s|4567~Carter One|d|4~Germania One|d|4~Pangolin|h|4~Ruda|s|456789~Italiana|s|4~Khula|s|34678~Spline Sans|s|34567~Alex Brush|h|4~Gantari|s|123456789~Julius Sans One|s|4~Playball|d|4~Kameron|r|4567~Leckerli One|h|4~Familjen Grotesk|s|4567~Just Another Hand|h|4~Pridi|r|234567~Gloock|r|4~Mandali|s|4~Aboreto|d|4~Kreon|r|34567~Fahkwang|s|234567~Chango|d|4~Covered By Your Grace|h|4~Grandstander|d|123456789~Anuphan|s|1234567~Istok Web|s|47~Funnel Display|d|345678~Tilt Warp|d|4~Playpen Sans|h|12345678~Asap Condensed|s|23456789~Suez One|r|4~Rye|d|4~Eater|d|4~Days One|s|4~Ubuntu Mono|m|47~Special Gothic Expanded One|s|4~Londrina Solid|d|1349~Itim|h|4~Lustria|r|4~Coda|d|48~Cutive Mono|m|4~Pathway Gothic One|s|4~Oooh Baby|h|4~Krona One|s|4~Limelight|d|4~Pixelify Sans|d|4567~Cabin Sketch|d|47~Fragment Mono|m|4~Young Serif|r|4~Baloo Bhai 2|d|45678~Saira Extra Condensed|s|123456789~Arsenal|s|47~Lateef|r|2345678~Parkinsans|s|345678~Concert One|d|4~Sintony|s|47~Charm|h|47~Ubuntu Sans|s|12345678~Barriecito|d|4~Mitr|s|234567~IM Fell English|r|4~Volkhov|r|47~Baloo Da 2|d|45678~Fredericka the Great|d|4~Charis SIL|r|47~Tomorrow|s|123456789~Livvic|s|12345679~Michroma|s|4~UnifrakturMaguntia|d|4~Corben|d|47~Host Grotesk|s|345678~Libre Caslon Display|r|4~Inria Serif|r|347~Bentham|r|4~Petrona|r|123456789~Chonburi|d|4~Carlito|s|47~Ibarra Real Nova|r|4567~Silkscreen|d|47~Electrolize|s|4~Cantata One|r|4~Cuprum|s|4567~Over the Rainbow|h|4~Petit Formal Script|h|4~Sofia Sans Semi Condensed|s|123456789~Spinnaker|s|4~Castoro|r|4~Poller One|d|4~Caudex|r|47~Herr Von Muellerhoff|h|4~Vidaloka|r|4~Bellefair|r|4~Belleza|s|4~Oranienbaum|r|4~Averia Libre|d|347~Norican|h|4~Balsamiq Sans|d|47~Cormorant SC|r|34567~Anonymous Pro|m|47~Karma|r|34567~Pattaya|s|4~Metrophobic|s|4~Nixie One|d|4~Halant|r|34567~Share|s|47~Alef|s|47~Cal Sans|s|4~Zalando Sans Expanded|s|23456789~Glegoo|r|47~Averia Serif Libre|d|347~Rakkas|d|4~Average Sans|s|4~Annie Use Your Telescope|h|4~Ms Madi|h|4~Marvel|s|47~Candal|s|4~Lexend Exa|s|123456789~Skranji|d|47~Pirata One|d|4~Seaweed Script|d|4~Pathway Extreme|s|123456789~Rancho|h|4~Allerta Stencil|s|4~Telex|s|4~Alegreya SC|r|45789~Jura|s|34567~Varela|s|4~Schoolbell|h|4~Bevan|r|4~Nobile|s|457~Allison|h|4~Pragati Narrow|s|47~Aref Ruqaa|r|47~Cormorant Upright|r|34567~Markazi Text|r|4567~Reddit Sans|s|23456789~Baloo Thambi 2|d|45678~Kristi|h|4~ADLaM Display|d|4~Angkor|d|4~Arbutus Slab|r|4~Rosario|s|34567~Ysabeau Office|s|123456789~Irish Grover|d|4~Fondamento|h|4~Calligraffitti|h|4~Anybody|d|123456789~Tektur|d|456789~Martian Mono|m|12345678~BioRhyme|r|2345678~Inclusive Sans|s|34567~Mukta Malar|s|2345678~Inria Sans|s|347~Beth Ellen|h|4~Doppio One|s|4~Antic Didone|r|4~Sniglet|d|48~Gochi Hand|h|4~Allerta|s|4~Anek Bangla|s|12345678~Fjord One|r|4~Lexend Zetta|s|123456789~Oxygen Mono|m|4~Sometype Mono|m|4567~Arizonia|h|4~Darker Grotesque|s|3456789~Bayon|s|4~Six Caps|s|4~Azeret Mono|m|123456789~Tilt Neon|d|4~Love Ya Like A Sister|d|4~Faster One|d|4~Montagu Slab|r|1234567~Bubblegum Sans|d|4~Lemonada|d|34567~Scada|s|47~Economica|s|47~Recursive|s|3456789~Amiko|s|467~Caprasimo|d|4~Trocchi|r|4~Corinthia|h|47~Copse|r|4~Convergence|s|4~Slackey|d|4~Monsieur La Doulaise|h|4~Asul|r|47~David Libre|r|457~Geo|s|4~Kelly Slab|d|4~Belanosima|s|467~Kodchasan|s|234567~Inknut Antiqua|r|3456789~Nova Mono|m|4~Amarante|d|4~Rubik Doodle Shadow|d|4~Vujahday Script|h|4~Bungee Shade|d|4~IM Fell DW Pica|r|4~Cedarville Cursive|h|4~Fauna One|r|4~McLaren|d|4~Big Shoulders|d|123456789~Akatab|s|456789~Stardos Stencil|d|47~Chewy|d|4~Megrim|d|4~Scheherazade New|r|4567~Zen Dots|d|4~Croissant One|d|4~Reddit Sans Condensed|s|23456789~Syne Mono|m|4~Jersey 25|d|4~Turret Road|d|234578~Rouge Script|h|4~Baloo Tamma 2|d|45678~Mr De Haviland|h|4~Shrikhand|d|4~Rochester|h|4~Sansita|s|4789~MuseoModerno|d|123456789~Short Stack|h|4~MedievalSharp|d|4~Average|r|4~Encode Sans Semi Condensed|s|123456789~Mate|r|4~Macondo|d|4~Adamina|r|4~Lexend Peta|s|123456789~Martel Sans|s|2346789~Sansita Swashed|d|3456789~Cambay|s|47~Squada One|d|4~Della Respira|r|4~Marcellus SC|r|4~Miriam Libre|s|4567~Sarala|s|47~Magra|s|47~Boogaloo|d|4~Major Mono Display|m|4~Sue Ellen Francisco|h|4~Hanuman|r|123456789~Platypi|r|345678~STIX Two Math|r|4~KoHo|s|234567~Pontano Sans|s|34567~Boldonse|d|4~Give You Glory|h|4~Rambla|s|47~Yrsa|r|34567~Ephesis|h|4~Fuzzy Bubbles|h|47~Niramit|s|234567~Fasthand|d|4~Almendra|r|47~Mansalva|h|4~Lacquer|d|4~Anek Latin|s|12345678~BenchNine|s|347~Mukta Vaani|s|2345678~Asar|r|4~Freehand|d|4~Gluten|d|123456789~Balthazar|r|4~Grape Nuts|h|4~Mali|h|234567~Xanh Mono|m|4~Gotu|s|4~Ovo|r|4~K2D|s|12345678~Nova Square|d|4~Akshar|s|34567~Alike|r|4~Kadwa|r|47~Viaoda Libre|d|4~B612|s|47~Numans|s|4~Basic|s|4~Puritan|s|47~Patrick Hand SC|h|4~Crafty Girls|h|4~Qwitcher Grypen|h|47~Metal Mania|d|4~Encode Sans Semi Expanded|s|123456789~Shadows Into Light Two|h|4~Jaldi|s|47~Frijole|d|4~Overpass Mono|m|34567~Finger Paint|d|4~Niconne|h|4~Contrail One|d|4~Coiny|d|4~Anaheim|s|45678~Sedgwick Ave|h|4~Cherry Cream Soda|d|4~Fontdiner Swanky|d|4~Cairo Play|s|23456789~Aclonica|s|4~Stick No Bills|s|2345678~Medula One|d|4~Neucha|h|4~Mallanna|s|4~MonteCarlo|h|4~Rosarivo|r|4~Judson|r|47~Montez|h|4~Graduate|r|4~Bona Nova|r|47~Jomhuria|d|4~Sour Gummy|s|123456789~Tiro Bangla|r|4~Jersey 10|d|4~Radley|r|4~Mohave|s|34567~Armata|s|4~Molengo|s|4~Moon Dance|h|4~Carattere|h|4~Spline Sans Mono|m|34567~Ledger|r|4~Chivo Mono|m|123456789~Teachers|s|45678~UnifrakturCook|d|7~Aldrich|s|4~Bakbak One|d|4~Buenard|r|4567~Supermercado One|d|4~Doto|s|123456789~Afacad Flux|s|123456789~League Script|h|4~Protest Revolution|d|4~Hepta Slab|r|123456789~Vesper Libre|r|4579~Charmonman|h|47~Yatra One|d|4~Sumana|r|47~Athiti|s|234567~Oregano|d|4~Arya|s|47~Luxurious Script|h|4~IM Fell Great Primer|r|4~Trirong|r|123456789~Borel|h|4~Freeman|d|4~Orelega One|d|4~Mirza|r|4567~Kalnia|r|1234567~Caladea|r|47~Modak|d|4~Madimi One|s|4~TikTok Sans|s|3456789~Kulim Park|s|23467~Redressed|h|4~Aladin|d|4~Nosifer|d|4~Duru Sans|s|4~Vina Sans|d|4~PT Serif Caption|r|4~Whisper|h|4~IM Fell Double Pica|r|4~Enriqueta|r|4567~Port Lligat Sans|s|4~Glory|s|12345678~Lily Script One|d|4~Birthstone|h|4~Cambo|r|4~Kranky|d|4~Abyssinica SIL|r|4~Dynalight|d|4~Anton SC|s|4~Oleo Script Swash Caps|d|47~Podkova|r|45678~Life Savers|d|478~Antic|s|4~Dawning of a New Day|h|4~Galada|d|4~Stack Sans Text|s|234567~Sunshiney|h|4~WindSong|h|45~Elsie|d|49~Protest Riot|d|4~Maiden Orange|r|4~Sigmar One|d|4~Federo|s|4~Bodoni Moda SC|r|456789~Fresca|s|4~Holtwood One SC|r|4~Meie Script|h|4~Zalando Sans|s|23456789~Kufam|s|456789~Bubbler One|s|4~Salsa|d|4~Style Script|h|4~Gayathri|s|147~Bellota|d|347~Mako|s|4~Baloo Paaji 2|d|45678~Coming Soon|h|4~Ruwudu|r|4567~Faculty Glyphic|s|4~Brygada 1918|r|4567~Galindo|d|4~Wire One|s|4~Tenali Ramakrishna|s|4~Varta|s|34567~Baloo Chettan 2|d|45678~Loved by the King|h|4~Sail|d|4~Grenze|r|123456789~Rubik Bubbles|d|4~Atkinson Hyperlegible Mono|s|2345678~Monofett|m|4~Modern Antiqua|d|4~Road Rage|d|4~IM Fell English SC|r|4~Swanky and Moo Moo|h|4~Edu SA Beginner|h|4567~Gentium Book Plus|r|47~Shantell Sans|d|345678~Uncial Antiqua|d|4~BhuTuka Expanded One|r|4~Grand Hotel|h|4~Iceland|d|4~Amethysta|r|4~Sedgwick Ave Display|h|4~The Nautigal|h|47~Moul|d|4~Hedvig Letters Serif|r|4~Poltawski Nowy|r|4567~AR One Sans|s|4567~Goblin One|d|4~Nova Round|d|4~Lovers Quarrel|h|4~Bokor|d|4~Slabo 13px|r|4~Raleway Dots|d|4~Iceberg|d|4~Laila|r|34567~Ysabeau SC|s|123456789~IM Fell French Canon|r|4~Wallpoet|d|4~Gabriela|r|4~Manuale|r|345678~IM Fell DW Pica SC|r|4~Dangrek|d|4~Koulen|d|4~Lekton|m|47~Ranchers|d|4~Englebert|s|4~Eagle Lake|h|4~Pompiere|d|4~Arbutus|r|4~Mina|s|47~Special Gothic|s|4567~SUSE|s|123456789~Moderustic|s|345678~Habibi|r|4~Kavoon|d|4~Baumans|d|4~Asset|d|4~Montaga|r|4~Special Gothic Condensed One|s|4~DynaPuff|d|4567~Edu NSW ACT Cursive|h|4567~Kode Mono|m|4567~Hedvig Letters Sans|s|4~Mouse Memoirs|s|4~Alkalami|r|4~Denk One|s|4~Playwrite US Trad|h|1234~Baloo Bhaina 2|d|45678~Goudy Bookletter 1911|r|4~Hubot Sans|s|23456789~Chicle|d|4~Kantumruy Pro|s|1234567~Alatsi|s|4~NTR|s|4~Imperial Script|h|4~Homenaje|s|4~Cascadia Code|s|234567~Cormorant Unicase|r|34567~Lemon|d|4~Quintessential|h|4~Truculenta|s|123456789~Kotta One|r|4~Badeen Display|d|4~Amiri Quran|r|4~Rubik Spray Paint|d|4~Mynerve|h|4~Encode Sans Expanded|s|123456789~Momo Trust Sans|s|2345678~Meddon|h|4~Edu TAS Beginner|h|4567~Macondo Swash Caps|d|4~Esteban|r|4~Poetsen One|d|4~Mountains of Christmas|d|47~Science Gothic|s|123456789~Mea Culpa|h|4~Red Rose|d|34567~Nova Slim|d|4~Miniver|d|4~Overlock|d|479~Yesteryear|h|4~Zalando Sans SemiExpanded|s|23456789~Gafata|s|4~Chau Philomene One|s|4~Jolly Lodger|d|4~IM Fell French Canon SC|r|4~Marmelad|s|4~Mozilla Headline|s|234567~Delius Swash Caps|h|4~Waiting for the Sunrise|h|4~Bellota Text|d|347~Maitree|r|234567~Londrina Outline|d|4~Sree Krushnadevaraya|r|4~Kdam Thmor Pro|s|4~Cherry Swash|d|47~Ballet|h|4~Pliant|s|123456789~Agdasima|s|47~Hurricane|h|4~Geom|s|3456789~Grenze Gotisch|d|123456789~Baskervville SC|r|4567~Freckle Face|d|4~Beau Rivage|h|4~Vampiro One|d|4~Sura|r|47~Fenix|r|4~Kenia|d|4~Sekuya|d|4~Story Script|s|4~Voltaire|s|4~Belgrano|r|4~Elms Sans|s|123456789~Isometra|r|4~Climate Crisis|d|4~Bungee Spice|d|4~Victor Mono|m|1234567~Zilla Slab Highlight|r|47~Tourney|d|123456789~Playwrite CA Guides|h|4~Playwrite VN|h|1234~Ancizar Serif|r|3456789~Bungee Inline|d|4~Rationale|s|4~Nova Cut|d|4~Carrois Gothic|s|4~Baloo Bhaijaan 2|d|45678~Akaya Kanadaka|d|4~Barrio|d|4~Cantora One|s|4~Farro|s|3457~Ysabeau|s|123456789~Pavanam|s|4~Strait|s|4~Wittgenstein|r|456789~Stint Ultra Condensed|r|4~Metamorphous|d|4~Mystery Quest|d|4~Manjari|s|147~Dorsa|s|4~Mate SC|r|4~Meow Script|h|4~Unlock|d|4~Geostar Fill|d|4~Ruslan Display|d|4~Rum Raisin|s|4~Engagement|h|4~Mukta Mahee|s|2345678~Jaro|s|4~Libertinus Serif|r|467~Notable|s|4~Cagliostro|s|4~Benne|r|4~Jockey One|s|4~Federant|d|4~Qwigley|h|4~Sigmar|d|4~Gwendolyn|h|47~Happy Monkey|d|4~Nerko One|h|4~B612 Mono|m|47~Margarine|d|4~Gentium Plus|r|47~Spectral SC|r|2345678~Capriola|s|4~Water Brush|h|4~National Park|s|2345678~Carrois Gothic SC|s|4~Vend Sans|s|34567~Fanwood Text|r|4~Rubik Wet Paint|d|4~Katibeh|d|4~Bruno Ace SC|d|4~New Rocker|d|4~Ramaraja|r|4~Girassol|d|4~Vibur|h|4~Passions Conflict|h|4~Libertinus Math|d|4~Just Me Again Down Here|h|4~Romanesco|h|4~Zain|s|234789~Coustard|r|49~Playwrite IN|h|1234~Atma|d|34567~Chilanka|h|4~Handjet|d|123456789~Poly|r|4~Smokum|d|4~Agbalumo|d|4~Luxurious Roman|d|4~Aguafina Script|h|4~Fascinate Inline|d|4~Island Moments|h|4~Tillana|d|45678~Akt|s|123456789~Text Me One|s|4~Tac One|s|4~Stack Sans Notch|s|234567~Uchen|r|4~Fascinate|d|4~Piazzolla|r|123456789~GFS Neohellenic|s|47~Dekko|h|4~Beiruti|s|23456789~Bungee Hairline|d|4~Festive|h|4~Solway|r|34578~Ravi Prakash|d|4~Playwrite NO|h|1234~Sonsie One|d|4~Bitcount Grid Double|d|123456789~Allan|d|47~Rubik Moonrocks|d|4~Vollkorn SC|r|4679~Koh Santepheap|r|13479~Farsan|d|4~Bitcount Prop Single|d|123456789~Glass Antiqua|d|4~Condiment|h|4~Tulpen One|d|4~Gurajada|s|4~Playwrite AU NSW|h|1234~Simonetta|d|49~Reddit Mono|m|23456789~Seymour One|s|4~Milonga|d|4~Playwrite DE Grund|h|1234~Codystar|d|34~Bilbo|h|4~Linden Hill|r|4~Buda|d|3~Arima|d|1234567~Sarina|d|4~Texturina|r|123456789~Playwrite IS|h|1234~Bigelow Rules|d|4~Rubik Dirt|d|4~Rasa|r|34567~Euphoria Script|h|4~Underdog|d|4~Fleur De Leah|h|4~Padauk|s|47~Anek Odia|s|12345678~Nata Sans|s|123456789~Jersey 15|d|4~Inika|r|47~Unkempt|d|47~Yaldevi|s|234567~Butcherman|d|4~Castoro Titling|d|4~Oi|d|4~Plaster|d|4~Thasadith|s|47~Twinkle Star|h|4~Princess Sofia|h|4~Bacasime Antique|r|4~Londrina Sketch|d|4~Walter Turncoat|h|4~Kurale|r|4~Ruluko|s|4~Tienne|r|479~Keania One|d|4~Sarpanch|s|456789~Jacques Francois Shadow|d|4~Cutive|r|4~Battambang|d|13479~Trykker|r|4~Londrina Shadow|d|4~Vast Shadow|r|4~Chela One|d|4~Neonderthaw|h|4~Piedra|d|4~Edu AU VIC WA NT Hand|h|4567~Elsie Swash Caps|d|49~Marko One|r|4~Wendy One|s|4~Sofadi One|d|4~Dai Banna SIL|r|34567~Joti One|d|4~Inspiration|h|4~Odor Mean Chey|r|4~Quando|r|4~Jacquard 12|d|4~Inder|s|4~Playwrite VN Guides|h|4~Bahiana|d|4~Expletus Sans|d|4567~Metal|d|4~Alkatra|d|4567~Emblema One|d|4~Amarna|s|1234567~Diplomata|d|4~Ojuju|s|2345678~Ewert|d|4~Tiny5|s|4~Hubballi|s|4~Sulphur Point|s|347~Bungee Outline|d|4~Galdeano|s|4~Butterfly Kids|h|4~Edu NSW ACT Foundation|h|4567~Meera Inimai|s|4~Momo Signature|s|4~Jacquarda Bastarda 9|d|4~SUSE Mono|s|12345678~Kedebideri|s|456789~Sixtyfour|m|4~Ancizar Sans|s|123456789~Anta|s|4~Ubuntu Sans Mono|m|4567~Babylonica|h|4~Prosto One|d|4~Arsenal SC|s|47~Prociono|r|4~Libertinus Sans|s|47~Wellfleet|r|4~Preahvihear|s|4~Square Peg|h|4~Miranda Sans|s|4567~Scope One|r|4~Gulzar|r|4~Passero One|d|4~Gideon Roman|d|4~Protest Strike|d|4~Miss Fajardose|h|4~Diplomata SC|d|4~Updock|h|4~Dhurjati|s|4~Brawler|r|47~Estonia|h|4~Playwrite AU QLD|h|1234~Ribeye Marrow|d|4~Playwrite HR|h|1234~Sassy Frass|h|4~Licorice|h|4~Playwrite IE|h|1234~Jersey 20|d|4~Kablammo|d|4~Bigshot One|d|4~Gveret Levin|h|4~Rubik Iso|d|4~Playwrite AR|h|1234~Lunasima|s|47~Peddana|r|4~Averia Sans Libre|d|347~TASA Explorer|s|45678~Cherish|h|4~Kolker Brush|h|4~The Girl Next Door|h|4~Iosevka Charon Mono|m|3457~Love Light|h|4~Rubik Glitch|d|4~Bitcount Ink|d|123456789~Lancelot|d|4~Trade Winds|d|4~Gidole|s|4~Langar|d|4~Shojumaru|d|4~Flavors|d|4~Gidugu|s|4~Rubik Burned|d|4~Fuggles|h|4~Grechen Fuemen|h|4~Estedad|s|123456789~Rhodium Libre|r|4~Menbere|s|1234567~Spicy Rice|d|4~Karantina|d|347~Cossette Texte|s|47~Birthstone Bounce|h|45~Sixtyfour Convergence|m|4~Tapestry|h|4~Artifika|r|4~Foldit|d|123456789~Aubrey|d|4~Bilbo Swash Caps|h|4~Danfo|r|4~TASA Orbiter|s|45678~Alyamama|r|3456789~Gupter|r|457~Pochaevsk|d|4~Playwrite GB S|h|1234~Edu QLD Hand|h|4567~Nokora|s|123456789~Moulpali|s|4~Ribeye|d|4~Splash|h|4~Rubik Marker Hatch|d|4~Rubik Vinyl|d|4~Alike Angular|r|4~Rubik Puddles|d|4~Sedan SC|r|4~Protest Guerrilla|d|4~Suranna|r|4~Moo Lah Lah|d|4~Atomic Age|d|4~Explora|h|4~Taprom|d|4~Bitcount Grid Single|d|123456789~Trochut|d|47~Harmattan|s|4567~Lumanosimo|h|4~Playwrite RO|h|1234~Ga Maamli|d|4~Scoutie Sans|s|2345678~Libertinus Mono|m|4~Labrada|r|123456789~Imprima|s|4~Playwrite DK Loopet|h|1234~Rubik Glitch Pop|d|4~Tai Heritage Pro|r|47~Combo|d|4~Phudu|d|3456789~Playwrite AT|h|1234~Voces|s|4~Orienta|s|4~Petemoss|h|4~Mooli|s|4~Workbench|m|4~Shanti|s|4~Clicker Script|h|4~Crushed|d|4~Suravaram|r|4~BBH Bogle|s|4~Sancreek|d|4~Snowburst One|d|4~Annapurna SIL|r|47~Alan Sans|s|3456789~Big Shoulders Inline|d|123456789~Geomini|s|2345678~Henny Penny|d|4~Idiqlat|r|234~Julee|h|4~Nova Flat|d|4~Rubik Broken Fax|d|4~Qahiri|s|4~Rubik Pixels|d|4~Imbue|r|123456789~Lilex|m|1234567~Winky Rough|s|3456789~Bitcount Single|d|123456789~M PLUS Code Latin|s|1234567~Narnoor|s|45678~Sansation|s|347~Playwrite FR Moderne|h|1234~Ponomar|d|4~Valley Sans|s|123456789~Playwrite ES|h|1234~Tuffy|s|47~Epunda Slab|r|3456789~Bonheur Royale|h|4~Playwrite DK Uloopet|h|1234~Comme|s|123456789~Kalnia Glaze|d|1234567~Playwrite NZ Basic|h|1234~Kumar One Outline|d|4~Playwrite MX Guides|h|4~Coral Pixels|d|4~Bitcount|d|123456789~Alien Block|d|4~Gorditas|d|47~Odibee Sans|d|4~Carme|s|4~Rubik Maps|d|4~Lavishly Yours|h|4~Bahianita|d|4~Asap Sharp|s|123456789~Momo Trust Display|s|4~Delicious Handrawn|h|4~Playwrite AU TAS|h|1234~Baloo Tammudu 2|d|45678~Playwrite DE SAS|h|1234~Maname|r|4~Gajraj One|d|4~Overlock SC|d|4~Peralta|r|4~Savate|s|23456789~Sankofa Display|s|4~Smythe|d|4~Exile|d|4~Hanalei|d|4~Caacupe One|d|4~Kavivanar|h|4~Playpen Sans Deva|h|12345678~Playwrite IT Moderna|h|1234~Playwrite GB J|h|1234~Playwrite ZA|h|1234~Gemunu Libre|s|2345678~Kripa|s|123456789~Puppies Play|h|4~Headland One|r|4~Honk|d|4~Rubik Doodle Triangles|d|4~Datatype|m|123456789~Junge|r|4~Saira Stencil|d|123456789~Genos|s|123456789~Playwrite NG Modern|h|1234~Waterfall|h|4~Nova Oval|d|4~Edu SA Hand|h|4567~Stack Sans Headline|s|234567~Sirivennela|s|4~Smooch|h|4~Rubik Maze|d|4~Playwrite MX|h|1234~Playwrite DE LA|h|1234~Liter|s|4~Montenegrin Gothic One|r|4~Playwrite PT|h|1234~Namdhinggo|r|45678~Warnes|d|4~BJCree|r|4567~Rubik Lines|d|4~Jaini Purva|d|4~Libertinus Keyboard|d|4~Edu VIC WA NT Hand|h|4567~IM Fell Double Pica SC|r|4~Delius Unicase|h|47~Trispace|s|12345678~Timmana|s|4~IM Fell Great Primer SC|r|4~Blaka Hollow|d|4~Yarndings 20 Charted|d|4~Bitcount Grid Single Ink|d|123456789~Akronim|d|4~Marhey|d|34567~Libre Caslon Condensed|r|4567~Strichpunkt Sans|s|456789~Betania Patmos|h|4~Flamenco|d|34~Playwrite NZ|h|1234~Miltonian|d|4~Playwrite AU VIC|h|1234~Jacquard 12 Charted|d|4~Bitcount Prop Double|d|123456789~Playwrite TZ|h|1234~Padyakke Expanded One|r|4~Kay Pho Du|r|4567~Edu NSW ACT Hand Pre|h|4567~Emilys Candy|d|4~Ceviche One|d|4~Playwrite ID|h|1234~Playwrite CO Guides|h|4~Stalemate|h|4~Bitcount Prop Double Ink|d|123456789~Erica One|d|4~Playwrite PE|h|1234~Solitreo|h|4~Autour One|d|4~Caesar Dressing|d|4~Clarity City|s|123456789~Playwrite CL|h|1234~Astloch|d|47~Jersey 15 Charted|d|4~Tauri|s|4~Sevillana|d|4~Playwrite PL Guides|h|4~Playwrite BR|h|1234~Miltonian Tattoo|d|4~Betania Patmos In|h|4~Griffy|d|4~Playwrite DK Uloopet Guides|h|4~Playwrite US Trad Guides|h|4~Mozilla Text|s|234567~Jersey 25 Charted|d|4~Ruthie|h|4~Yarndings 12|d|4~Jersey 10 Charted|d|4~Betania Patmos In GDL|h|4~Betania Patmos GDL|h|4~Edu VIC WA NT Hand Pre|h|4567~Kanchenjunga|s|4567~Devonshire|h|4~Playwrite AU VIC Guides|h|4~Playwrite DE VA|h|1234~Joan|r|4~Jomolhari|r|4~Playwrite FR Trad|h|1234~Nova Script|d|4~Playwrite DE Grund Guides|h|4~Jacques Francois|r|4~Playwrite PE Guides|h|4~Playwrite NZ Basic Guides|h|4~Ramsina|r|4~Playwrite IE Guides|h|4~Stint Ultra Expanded|r|4~Lexend Mega|s|123456789~Playwrite IN Guides|h|4~Playwrite GB S Guides|h|4~Comforter|h|4~Playwrite IT Trad|h|1234~Yarndings 12 Charted|d|4~Yarndings 20|d|4~Playwrite BR Guides|h|4~Finlandica Text|s|123456789~Playwrite TZ Guides|h|4~Akaya Telivigala|d|4~Shalimar|h|4~Playwrite ES Deco Guides|h|4~Playwrite AU QLD Guides|h|4~BBH Bartle|s|4~Playwrite DE LA Guides|h|4~Playwrite AU NSW Guides|h|4~Playwrite CU|h|1234~Playwrite IT Moderna Guides|h|4~Playwrite FR Trad Guides|h|4~Playwrite ID Guides|h|4~Playwrite US Modern Guides|h|4~Playwrite NO Guides|h|4~Playwrite HU Guides|h|4~Playwrite DK Loopet Guides|h|4~Playwrite ZA Guides|h|4~Monomakh|d|4~Playwrite AU TAS Guides|h|4~Playwrite NG Modern Guides|h|4~SN Pro|s|23456789~Playwrite HR Lijeva Guides|h|4~Playwrite BE VLG Guides|h|4~Playwrite CZ Guides|h|4~Playwrite RO Guides|h|4~Playwrite HR Guides|h|4~Port Lligat Slab|r|4~Montserrat Underline|s|123456789~Offside|d|4~Zen Tokyo Zoo|d|4~Sono|s|2345678~Suwannaphum|r|13479~Braah One|s|4~Srisakdi|d|47~Rubik Scribble|d|4~Nabla|d|4~Manufacturing Consent|d|4~Risque|d|4~Lexend Tera|s|123456789~Stoke|r|34~Spirax|d|4~Ysabeau Infant|s|123456789~Paprika|d|4~Lugrasimo|h|4~Averia Gruesa Libre|d|4~Jim Nightshade|h|4~Konkhmer Sleokchher|d|4~Winky Sans|s|3456789~Donegal One|r|4~Encode Sans SC|s|123456789~New Amsterdam|s|4~Chathura|s|13478~Caramel|h|4~Mogra|d|4~Comforter Brush|h|4~Felipa|h|4~Kite One|s|4~Send Flowers|h|4~Almendra SC|r|4~Tilt Prism|d|4~Alumni Sans Pinstripe|s|4~Praise|h|4~Aref Ruqaa Ink|r|47~Kumar One|d|4~Bruno Ace|d|4~Alumni Sans SC|s|123456789~Bungee Tint|d|4~Alumni Sans Inline One|d|4~Playwrite AU SA|h|1234~Intel One Mono|m|34567~Cascadia Mono|s|234567~Fruktur|d|4~Big Shoulders Stencil|d|123456789~Iosevka Charon|m|3457~Sahitya|r|47~Syne Tactile|d|4~My Soul|h|4~Lakki Reddy|h|4~Sirin Stencil|d|4~BBH Hegarty|s|4~Nuosu SIL|s|4~Almendra Display|d|4~Vibes|d|4~Ranga|d|47~Dr Sugiyama|h|4~Micro 5|d|4~Playwrite US Modern|h|1234~Snippet|s|4~Mr Bedfort|h|4~Rubik Distressed|d|4~Stalinist One|d|4~Playwrite PL|h|1234~Zen Loop|d|4~Epunda Sans|s|3456789~Purple Purse|d|4~Rubik Microbe|d|4~Matemasie|s|4~Playwrite BE WAL Guides|h|4~Grey Qo|h|4~Oldenburg|d|4~Alumni Sans Collegiate One|s|4~Revalia|d|4~Bonbon|h|4~Sedan|r|4~Mrs Sheppards|h|4~Edu VIC WA NT Beginner|h|4567~BioRhyme Expanded|r|23478~Hanalei Fill|d|4~Cause|h|123456789~Rubik 80s Fade|d|4~Rubik Gemstones|d|4~Playwrite CU Guides|h|4~Geist Pixel|d|4~Playwrite CA|h|1234~Cossette Titre|s|47~Jacquard 24|d|4~Triodion|d|4~Rubik Beastly|d|4~Tirra|s|456789~Agu Display|d|4~Blaka|d|4~Kings|h|4~Are You Serious|h|4~Ole|h|4~Asimovian|s|4~Shafarik|d|4~Ruge Boogie|h|4~Edu AU VIC WA NT Dots|h|4567~Edu AU VIC WA NT Guides|h|4567~Geostar|d|4~Hind Mysuru|s|34567~Parastoo|r|4567~Playwrite HU|h|1234~Ingrid Darling|h|4~Playwrite NL|h|1234~Edu QLD Beginner|h|4567~Libertinus Serif Display|d|4~Playwrite BE VLG|h|1234~Tagesschrift|d|4~Finlandica Headline|s|123456789~Lisu Bosa|r|23456789~Hibur Mono|m|4~Bytesized|s|4~Playwrite HR Lijeva|h|1234~Playwrite CZ|h|1234~Ponnala|d|4~Allkin|d|4~Edu AU VIC WA NT Arrows|h|4567~Edu AU VIC WA NT Pre|h|4567~Jaini|d|4~Playwrite GB J Guides|h|4~Yuyu|h|4~Playwrite BE WAL|h|1234~Yuyu Short|h|4~Rubik Storm|d|4~Mingzat|s|4~Playwrite SK|h|1234~Bitcount Grid Double Ink|d|123456789~Bitcount Single Ink|d|123456789~Jersey 20 Charted|d|4~Matangi|s|3456789~Playwrite CO|h|1234~Bitcount Prop Single Ink|d|123456789~Jacquard 24 Charted|d|4~Micro 5 Charted|d|4~Playwrite ES Deco|h|1234~Playwrite NZ Guides|h|4~Jacquarda Bastarda 9 Charted|d|4~Playwrite PT Guides|h|4~Playwrite AR Guides|h|4~Playwrite DE SAS Guides|h|4~Playwrite AT Guides|h|4~Playwrite DE VA Guides|h|4~Playwrite FR Moderne Guides|h|4~Playwrite IT Trad Guides|h|4~Playwrite AU SA Guides|h|4~Playwrite CL Guides|h|4~Playwrite IS Guides|h|4~Playwrite NL Guides|h|4~Playwrite ES Guides|h|4~Playwrite SK Guides|h|4";
+const FONTS = {};
+FONT_DATA.split("~").forEach(row => {
+  const [name, c, w] = row.split("|");
+  FONTS[name] = {c, w: [...w].map(d => +d * 100)};
+});
+const CATS = [["s","Sans-serif"],["r","Serif"],["d","Display"],["h","Handwriting"],["m","Monospace"]];
+const FALLBACK = {r:"Georgia, 'Times New Roman', serif", s:"system-ui, -apple-system, 'Segoe UI', sans-serif", d:"system-ui, -apple-system, 'Segoe UI', sans-serif", h:"'Brush Script MT', cursive", m:"ui-monospace, SFMono-Regular, Menlo, Consolas, monospace"};
+const WEIGHT_NAMES = {100:"Thin",200:"Extralight",300:"Light",400:"Regular",500:"Medium",600:"Semibold",700:"Bold",800:"Extrabold",900:"Black"};
+
+const SETS = {
+  trades:{label:"Roofing company", brand:"Ridgeline Roofing", links:["Services","Service areas","About"], cta:"Get a free estimate", btn2:"See our work",
+    h:"Roofing done right the first time, by people who answer the phone",
+    sub:"We've replaced and repaired roofs across Middle Tennessee for 18 years. Every job gets a written estimate, a dedicated crew lead, and a cleanup you'll actually notice.",
+    sh:"Roof services for every stage of your home", si:"Whether it's a few missing shingles after a storm or a full metal roof replacement, we'll tell you what you need and what can wait.",
+    cards:[["Storm damage repair","Fast inspections and insurance-ready documentation after hail and wind."],["Metal roofing","Long-lasting standing seam roofs installed by our own trained crews."],["Gutters and ventilation","The details that keep water out and your attic from overheating."]],
+    meta:"Roofing tips, 6 minute read", at:"How to tell if your roof needs a repair or a full replacement",
+    al:"Most homeowners only think about their roof when something goes wrong, so it's hard to know whether a leak means a quick patch or a bigger project.",
+    ap:"The age of your roof is the best place to start. Asphalt shingles typically last 20 to 25 years, and if yours is getting close, repairs start to cost more than they save.",
+    ah:"Signs a repair will do", ap2:"A few damaged shingles, a small leak around flashing, or minor storm damage in one area can usually be fixed in an afternoon without touching the rest of the roof.",
+    q:"They showed up when they said they would, explained everything before starting, and left the yard cleaner than they found it.", qn:"Dana M., Hendersonville homeowner"},
+  law:{label:"Law firm", brand:"Whitaker Lane Law", links:["Practice areas","Attorneys","Insights"], cta:"Schedule a consultation", btn2:"Meet our attorneys",
+    h:"Clear legal guidance for the decisions that shape your family's future",
+    sub:"We help families with estate planning, probate, and elder law, and we explain every step in plain English so you're never left guessing.",
+    sh:"How we can help", si:"Every plan starts with a conversation about what matters most to you, then we build the documents and strategy around it.",
+    cards:[["Estate planning","Wills, trusts, and powers of attorney tailored to your family."],["Probate and administration","Guidance through the court process after the loss of a loved one."],["Elder law","Planning for long-term care while protecting what you've built."]],
+    meta:"Estate planning, 5 minute read", at:"Five documents every adult should have, even without a large estate",
+    al:"Estate planning isn't only for the wealthy. A few simple documents can save your family time, money, and stress when they need it most.",
+    ap:"A will is the first piece most people think of, and it's important, but it only covers what happens after you're gone.",
+    ah:"Planning for the unexpected", ap2:"Powers of attorney for healthcare and finances let someone you trust make decisions if you're ever unable to, without going to court first.",
+    q:"They took something that felt overwhelming and made it manageable. We left our first meeting with a clear plan and real peace of mind.", qn:"Karen and Tom R., estate planning clients"},
+  food:{label:"Bakery", brand:"Hearth & Honey Bakery", links:["Menu","Catering","Visit"], cta:"Order ahead", btn2:"View today's menu",
+    h:"Bread baked before sunrise and pastries worth the early drive",
+    sub:"Our small team bakes everything from scratch each morning using local flour, butter, and seasonal fruit from farms just down the road.",
+    sh:"Something for every table", si:"Stop in for a morning coffee, order a dozen for the office, or let us handle dessert for your next celebration.",
+    cards:[["Daily bakery","Croissants, sourdough, and rotating seasonal pastries every morning."],["Office catering","Breakfast boxes and pastry platters delivered by 8am."],["Custom cakes","Celebration cakes designed with you, from birthdays to weddings."]],
+    meta:"From the kitchen, 4 minute read", at:"The secret to our sourdough is patience, not a fancy recipe",
+    al:"People ask about our sourdough recipe all the time, and the honest answer is that there isn't much to it besides flour, water, salt, and time.",
+    ap:"Our starter has been going for almost nine years, and every loaf rests overnight so the flavor has time to develop before it ever sees the oven.",
+    ah:"Why we bake in small batches", ap2:"Baking in smaller batches means we can adjust for the weather, the humidity, and even the flour, so every loaf comes out the way it should.",
+    q:"The cardamom buns alone are worth the trip, and the staff remembers my order every single time.", qn:"Priya S., Saturday regular"},
+  care:{label:"Community health nonprofit", brand:"Open Door Community Health", links:["Services","Get involved","About"], cta:"Donate", btn2:"Find care",
+    h:"Healthcare for every neighbor, regardless of insurance or income",
+    sub:"For over 20 years, our clinic has provided primary care, dental services, and wellness programs to families who would otherwise go without.",
+    sh:"Care that meets people where they are", si:"Our team of volunteers and staff offers walk-in hours, sliding-scale fees, and bilingual support so no one is turned away.",
+    cards:[["Primary care","Checkups, screenings, and ongoing care for chronic conditions."],["Dental clinic","Cleanings, fillings, and urgent dental care on a sliding scale."],["Volunteer program","Share your time and skills with neighbors who need it."]],
+    meta:"Community news, 4 minute read", at:"Five ways to support community health this season",
+    al:"You don't need a medical background to make a real difference in your community's health, and many of the most helpful ways to give take less than an hour.",
+    ap:"Donating supplies like toothbrushes and hygiene kits helps our dental clinic stretch its budget further and reach more families each month.",
+    ah:"Give your time", ap2:"Our volunteers greet patients, help with scheduling, and translate during visits, and every shift makes the clinic run more smoothly.",
+    q:"When I lost my job, I didn't know where to turn for my daughter's checkups. Open Door treated us like family from the very first visit.", qn:"Maria L., patient since 2019"},
+  home:{label:"Custom home builder", brand:"Calloway Custom Homes", links:["Portfolio","Our process","Communities"], cta:"Start your build", btn2:"Tour our portfolio",
+    h:"Custom homes designed around the way your family actually lives",
+    sub:"From the first sketch to the final walkthrough, we build every home with thoughtful details, quality materials, and a process you can see every step of the way.",
+    sh:"Building with you, not just for you", si:"Our design-build process keeps your architect, builder, and selections team under one roof, so decisions happen faster and nothing gets lost along the way.",
+    cards:[["Custom builds","One-of-a-kind homes on your land or one of our homesites."],["Design studio","Guided selections for finishes, fixtures, and materials."],["Warranty care","A dedicated team for questions long after move-in day."]],
+    meta:"Homeowner guide, 5 minute read", at:"What to expect during your first year in a new custom home",
+    al:"Moving into a new home is exciting, and knowing what to expect in the first year makes the experience even better.",
+    ap:"Every new home settles a bit as the seasons change, so small things like hairline drywall cracks or sticking doors are completely normal in the first few months.",
+    ah:"Your 11-month walkthrough", ap2:"Before your first year ends, we'll walk through the entire home with you and take care of anything that needs attention, big or small.",
+    q:"They made a process we were nervous about feel exciting. Every question got an answer, and the finished home is better than we imagined.", qn:"The Morrison family, homeowners"},
+  b2b:{label:"Industrial manufacturer", brand:"Vantage Controls", links:["Products","Industries","Support"], cta:"Request a quote", btn2:"Explore products",
+    h:"Industrial control systems built to keep your production line running",
+    sub:"We design and manufacture custom control panels and automation systems for manufacturers who can't afford unplanned downtime.",
+    sh:"Engineering support from spec to startup", si:"Our in-house engineers work with your team to design, build, and commission systems that fit your facility and scale as you grow.",
+    cards:[["Custom control panels","UL-listed panels built to your exact specifications."],["Automation upgrades","Modernize aging equipment without replacing the whole line."],["Field service","On-site commissioning, training, and 24/7 support."]],
+    meta:"Engineering insights, 7 minute read", at:"How to plan a controls upgrade without shutting down production",
+    al:"Upgrading an aging control system is one of the best ways to improve reliability, but most plants can't afford weeks of downtime to make it happen.",
+    ap:"The key is planning the cutover in phases, so each section of the line is upgraded and tested while the rest keeps running.",
+    ah:"Start with an audit", ap2:"A thorough audit of your existing equipment and wiring helps uncover surprises early, when they're still easy and inexpensive to plan around.",
+    q:"Their team understood our process better than our last two vendors combined, and the upgrade finished a week ahead of schedule.", qn:"Mark D., plant operations manager"},
+  studio:{label:"Creative studio", brand:"Brightfield Studio", links:["Work","Services","Studio"], cta:"Start a project", btn2:"See our work",
+    h:"Brand and event design for companies that want to be remembered",
+    sub:"We're a small creative studio that helps growing brands launch products, host memorable events, and show up with personality everywhere they go.",
+    sh:"What we make", si:"Most of our projects start with one piece, like a logo or an event, and grow into a long-term partnership as the brand evolves.",
+    cards:[["Brand identity","Logos, color, type, and guidelines your team will actually use."],["Event design","Signage, stage graphics, and swag for conferences and launches."],["Campaigns","Social, print, and digital creative built around a single idea."]],
+    meta:"Studio notes, 4 minute read", at:"Why your brand guidelines should fit on a single page",
+    al:"We've seen plenty of 80-page brand books sit untouched in a shared drive, so we started asking clients what their team really needs.",
+    ap:"Most people only need the logo files, the colors, the fonts, and a few examples of how they come together, and everything else can live in a longer reference.",
+    ah:"Make the right thing easy", ap2:"When your guidelines are short and easy to find, your team uses them, and your brand stays consistent without anyone having to police it.",
+    q:"They took our scattered ideas and turned them into a brand our whole team is proud of, and the launch event was the best we've ever hosted.", qn:"Jordan K., marketing director"},
+  coach:{label:"Business coach", brand:"Maya Ellis Coaching", links:["Coaching","Workshops","About"], cta:"Book a free call", btn2:"Explore coaching",
+    h:"Build a business that fits the life you actually want",
+    sub:"I help small business owners get clear on their goals, make confident decisions, and grow without burning out along the way.",
+    sh:"Ways we can work together", si:"Whether you want one-on-one support or a focused workshop for your team, every program starts with where you are today.",
+    cards:[["One-on-one coaching","Twelve weeks of personalized sessions and accountability."],["Team workshops","Half-day sessions on planning, communication, and focus."],["Strategy intensives","A single deep-dive day to map out your next year."]],
+    meta:"Business growth, 5 minute read", at:"Why your busiest season is the best time to plan the next one",
+    al:"It sounds backwards, but the weeks when you're stretched thin are often when the clearest ideas about your business show up.",
+    ap:"When you're in the middle of it, you can see exactly which tasks drain your energy, which clients are a great fit, and where your time really goes.",
+    ah:"Write it down while it's fresh", ap2:"Keep a simple running note during busy weeks, and jot down anything that frustrates you or anything that felt surprisingly easy.",
+    q:"Working with Maya gave me the clarity I'd been missing for years. I finally have a plan I believe in, and my business has never felt more manageable.", qn:"Alicia P., studio owner"},
+  editorial:{label:"Regional magazine", brand:"The Ridge Review", links:["Stories","Food and travel","Archive"], cta:"Subscribe", btn2:"Read the latest issue",
+    h:"Stories from the small towns, back roads, and kitchens of the Cumberland Plateau",
+    sub:"An independent magazine celebrating the people, places, and traditions that make our region worth exploring, published four times a year.",
+    sh:"Inside this issue", si:"From a fourth-generation orchard to a fiddle maker who learned the craft from his grandfather, this season's stories are all about what gets handed down.",
+    cards:[["The orchard keepers","A family farm marks 100 years of apple harvests."],["Built by hand","Meet the craftsman restoring century-old fiddles."],["Weekend drives","Five scenic routes for peak fall color."]],
+    meta:"Features, 9 minute read", at:"The last general store on Highway 70 is still open, and still busy",
+    al:"On most mornings, the bench outside Hollis Mercantile is full before the coffee is ready, and that's exactly how owner June Hollis likes it.",
+    ap:"Her grandfather opened the store in 1946, selling feed, hardware, and penny candy to farmers who came into town once a week, and not much about the place has changed since.",
+    ah:"More than a store", ap2:"Today it's part grocery, part post office, and part town square, and June says the conversations matter just as much as anything on the shelves.",
+    q:"Every issue feels like a long Sunday drive with someone who knows all the best places to stop.", qn:"A longtime subscriber"}
+};
+
+const PICKS = [
+  {head:"Hanken Grotesk", body:"Figtree", hw:700, set:"b2b", for:"Tech, B2B, and professional services",
+   note:"Two clean, modern sans-serifs that feel related without looking identical. Hanken's tighter shapes give headings more presence, while Figtree keeps the body copy friendly and open."},
+  {head:"Barlow Semi Condensed", body:"Inter", hw:700, set:"trades", for:"Trades, home services, and industrial",
+   note:"Barlow's slightly squared shapes give headings a sturdy, practical feel, and Inter is one of the most readable screen fonts out there for body copy."},
+  {head:"Lora", body:"Mulish", hw:600, set:"care", for:"Nonprofits, healthcare, and community organizations",
+   note:"Lora's soft curves make headings feel warm and approachable, and Mulish's minimal shapes keep long paragraphs easy to read."},
+  {head:"Fraunces", body:"Inter", hw:600, set:"food", for:"Restaurants, hospitality, and lifestyle brands",
+   note:"Fraunces has a lot of character in its heavier weights, so pairing it with a neutral body font like Inter lets it stand out without the two competing."},
+  {head:"Libre Bodoni", body:"Montserrat", hw:500, set:"home", for:"Luxury, real estate, and custom homes",
+   note:"Bodoni's high contrast feels classic and upscale, and Montserrat's wide geometric shapes give it a clean, modern counterpart. Keep Bodoni for headings, since its thin strokes get delicate at small sizes."},
+  {head:"Fahkwang", body:"Source Sans 3", hw:500, set:"studio", for:"Elegant, modern brands",
+   note:"Fahkwang's flared, slightly unexpected shapes give headings a distinctive personality, and Source Sans 3 is a calm, dependable body font that keeps everything grounded."},
+  {head:"Instrument Serif", body:"Outfit", hw:400, set:"editorial", for:"News, blogs, and magazines",
+   note:"Instrument Serif's narrow, refined shapes fit long headlines into fewer lines, which helps a lot on content-heavy sites, and Outfit's clean geometric shapes keep everything feeling current."},
+  {head:"DM Serif Display", body:"Work Sans", hw:400, set:"coach", for:"Coaches and personal brands",
+   note:"DM Serif Display feels confident and personal at large sizes, which suits a brand built around one person, and Work Sans keeps the body copy approachable and easy to read."}
+];
+
+
+/* Extra blog post content per sample set */
+const ARTICLE = {
+  trades:{by:"Sam Ortiz", date:"March 12", ap3:"If the damage is limited and the rest of the roof still lies flat and dry, a repair is usually the smarter investment.",
+    lh:"Common signs it's time to replace", list:["Shingles that are curling, cracking, or missing across several areas","Granules collecting in your gutters after every rain","Daylight or water stains showing up in the attic"],
+    pq:"A roof that's patched every year is usually telling you it's ready to be replaced.",
+    ah2:"Getting an honest second opinion", ap4:"A good roofer will walk you through photos of what they found and explain which issues are urgent and which ones can wait.",
+    ap5:"If someone pushes a full replacement without showing you why, it's worth getting another estimate before you sign anything."},
+  law:{by:"Elena Whitaker", date:"February 3", ap3:"That's why most plans pair a will with a few other documents that protect you while you're still living.",
+    lh:"The documents to start with", list:["A will that names guardians and directs your property","A durable power of attorney for financial decisions","A healthcare directive that spells out your wishes"],
+    pq:"The best estate plan is the one your family can actually understand when they need it.",
+    ah2:"Keeping your plan up to date", ap4:"Life changes like marriage, a new child, or a move to another state are all good reasons to review your documents.",
+    ap5:"We recommend a quick check-in every few years, even if nothing major has changed, so your plan still reflects what you want."},
+  food:{by:"Lena Brooks", date:"April 21", ap3:"It also means we sell out of some favorites by lunch, which we've decided is a good problem to have.",
+    lh:"What we bake every morning", list:["Country sourdough and seeded rye","Butter croissants and pain au chocolat","A seasonal fruit galette that changes every few weeks"],
+    pq:"Good bread can't be rushed, and honestly, neither can a good Saturday morning.",
+    ah2:"Bringing it home", ap4:"If you're baking sourdough at home, start by giving your dough more time than the recipe says, especially in cooler months.",
+    ap5:"And if it doesn't turn out perfectly the first time, that's completely normal. Ours didn't either."},
+  care:{by:"Grace Nguyen", date:"October 8", ap3:"Many of our volunteers started with a single shift and now help out every month, and some have even joined our board.",
+    lh:"Supplies we always need", list:["Toothbrushes, toothpaste, and floss","Travel-size hygiene kits for walk-in patients","Children's books for our waiting room"],
+    pq:"Every donation and every volunteer hour means one more neighbor gets the care they need.",
+    ah2:"Spread the word", ap4:"One of the simplest ways to help is telling people about the clinic, since many families don't know affordable care is available nearby.",
+    ap5:"Sharing our posts, mentioning us at church or school, or picking up a few flyers for your workplace all make a real difference."},
+  home:{by:"Ben Calloway", date:"June 17", ap3:"Your home's systems also take a little time to settle in, so we'll check in after the first few months to see how everything is running.",
+    lh:"Simple first-year maintenance", list:["Change HVAC filters every one to three months","Test smoke and carbon monoxide detectors","Check caulking around tubs, sinks, and windows"],
+    pq:"A new home is built once, but it's cared for every single day after that.",
+    ah2:"We're still here after move-in", ap4:"Our warranty team is a phone call away for questions, whether it's a squeaky stair or how to adjust your irrigation system.",
+    ap5:"We'd much rather hear about something small early than have it turn into a bigger issue down the road."},
+  b2b:{by:"Rachel Ames", date:"January 29", ap3:"Phasing also gives your operators time to learn the new system gradually, instead of all at once on a Monday morning.",
+    lh:"What a phased upgrade usually includes", list:["A full audit of existing panels, wiring, and documentation","A cutover schedule built around your production calendar","Operator training before each section goes live"],
+    pq:"The best upgrades are the ones your customers never notice happened.",
+    ah2:"Planning for what comes next", ap4:"A modern control system also makes it much easier to add monitoring, reporting, and remote support later on.",
+    ap5:"Even if those aren't on your list today, it's worth planning the infrastructure now so you're not rewiring again in five years."},
+  studio:{by:"Mia Torres", date:"May 6", ap3:"The longer document still has its place, but it shouldn't be the first thing someone has to read to make a flyer.",
+    lh:"What belongs on the single page", list:["Your primary logo and when to use each version","Your color palette with exact values","Your fonts and a simple type hierarchy"],
+    pq:"If your team can't find your brand guidelines in ten seconds, they're not going to use them.",
+    ah2:"Revisit it every year", ap4:"Brands evolve, and your guidelines should evolve with them, so we suggest reviewing yours once a year.",
+    ap5:"It's also a great excuse to look at what your team has been creating and celebrate the work that's really landing."},
+  coach:{by:"Maya Ellis", date:"August 11", ap3:"Those notes become a roadmap when things slow down, because they're based on what actually happened instead of what you remember.",
+    lh:"Questions to ask yourself", list:["What would I stop doing if I could?","Which projects gave me the most energy?","Where did I say yes when I meant no?"],
+    pq:"The busiest weeks show you exactly what your business needs next, as long as you're paying attention.",
+    ah2:"Turning notes into a plan", ap4:"Once things slow down, set aside an afternoon to review your notes and group them into a few clear themes.",
+    ap5:"From there, choose one or two changes to make first, because small, steady improvements tend to stick far better than a complete overhaul."},
+  editorial:{by:"Claire Dunn", date:"September 14", ap3:"Regulars have their own mugs hanging on hooks behind the counter, and newcomers are usually offered a cup before they've had a chance to look around.",
+    lh:"If you stop by", list:["Come early on Saturdays for fresh biscuits","Bring cash for the honor-system produce stand","Ask June about the photos above the register"],
+    pq:"People think they're coming in for milk or nails, but they're really coming in to catch up.",
+    ah2:"Keeping the doors open", ap4:"June admits that running a small store isn't easy, especially with bigger grocery chains just a short drive away.",
+    ap5:"Still, she has no plans to slow down, and she says as long as the bench out front stays full, she'll keep the coffee coming."}
+};
+
+const LAYOUTS = [["hero","Homepage hero"],["services","Services section"],["article","Blog post"],["quote","Testimonial"]];
+const state = {head:PICKS[0].head, body:PICKS[0].body, hw:PICKS[0].hw, set:PICKS[0].set, size:17, hsize:56, unit:"px", layout:"hero"};
+
+/* ---------- Font loading ---------- */
+const loaded = new Set();
+const famParam = name => {
+  const w = FONTS[name].w, fam = name.replace(/ /g, "+");
+  return (w.length === 1 && w[0] === 400) ? fam : fam + ":wght@" + w.join(";");
+};
+function loadFonts(names){
+  const todo = [...new Set(names)].filter(n => FONTS[n] && !FONTS[n].custom && !loaded.has(n));
+  if(!todo.length) return;
+  todo.forEach(n => loaded.add(n));
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = "https://fonts.googleapis.com/css2?" + todo.map(n => "family=" + famParam(n)).join("&") + "&display=swap";
+  document.head.appendChild(link);
+}
+const stack = n => `'${n}', ${FALLBACK[FONTS[n].c]}`;
+const nearest = (arr, t) => arr.reduce((a, b) => Math.abs(b - t) < Math.abs(a - t) ? b : a);
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* Heading scale: H1 is set by the slider, H2 and H3 step down from it */
+function scale(){
+  const h1 = state.hsize;
+  const h2 = Math.round(h1 * 0.62);
+  const h3 = Math.max(Math.round(h1 * 0.4), Math.round(state.size * 1.2));
+  return {h1, h2, h3};
+}
+
+/* ---------- Build UI ---------- */
+function buildPicks(){
+  $("picks").innerHTML = PICKS.map((p, i) => `
+    <li><button type="button" class="pick" data-i="${i}" aria-pressed="false">
+      <span class="pick-head" style="font-family:${esc(stack(p.head))};font-weight:${p.hw}">${esc(p.head)}</span>
+      <span class="pick-body" style="font-family:${esc(stack(p.body))}">with ${esc(p.body)}</span>
+      <span class="pick-for">${esc(p.for)}</span>
+    </button></li>`).join("");
+  $("picks").addEventListener("click", e => {
+    const b = e.target.closest(".pick"); if(!b) return;
+    const p = PICKS[+b.dataset.i];
+    Object.assign(state, {head:p.head, body:p.body, hw:p.hw, set:p.set});
+    render();
+  });
+}
+function buildLayouts(){
+  $("layouts").innerHTML = LAYOUTS.map(([k, label]) =>
+    `<button type="button" role="tab" id="tab-${k}" data-l="${k}" aria-controls="site" aria-selected="false">${label}</button>`).join("");
+  $("layouts").addEventListener("click", e => {
+    const b = e.target.closest("button"); if(!b) return;
+    state.layout = b.dataset.l; render();
+  });
+  $("layouts").addEventListener("keydown", e => {
+    if(e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+    const i = LAYOUTS.findIndex(l => l[0] === state.layout);
+    const n = (i + (e.key === "ArrowRight" ? 1 : -1) + LAYOUTS.length) % LAYOUTS.length;
+    state.layout = LAYOUTS[n][0]; render(); $("tab-" + state.layout).focus();
+  });
+}
+function fillFontSelects(){
+  const html = CATS.map(([c, label]) => {
+    const opts = Object.keys(FONTS).filter(n => FONTS[n].c === c).sort((a,b) => a.localeCompare(b))
+      .map(n => `<option value="${esc(n)}">${esc(n)}</option>`).join("");
+    return opts ? `<optgroup label="${label}">${opts}</optgroup>` : "";
+  }).join("");
+  $("head").innerHTML = html; $("body").innerHTML = html;
+}
+/* ---------- Preview content ---------- */
+function siteHTML(){
+  const s = SETS[state.set], a = ARTICLE[state.set];
+  switch(state.layout){
+    case "services": return `<section class="s-services">
+        <div class="s-split"><h2>${esc(s.sh)}</h2><p>${esc(s.si)}</p></div>
+        <div class="s-cards">${s.cards.map(c => `<div class="s-card"><h3>${esc(c[0])}</h3><p>${esc(c[1])}</p></div>`).join("")}</div>
+      </section>`;
+    case "article": return `<article class="s-article">
+        <p class="s-meta">${esc(s.meta)}</p>
+        <h1>${esc(s.at)}</h1>
+        <div class="s-byline"><span class="s-avatar" aria-hidden="true"></span><span><strong>${esc(a.by)}</strong>${esc(a.date)}</span></div>
+        <div class="s-feature" aria-hidden="true"></div>
+        <p class="s-lead">${esc(s.al)}</p>
+        <p>${esc(s.ap)}</p>
+        <h2>${esc(s.ah)}</h2>
+        <p>${esc(s.ap2)}</p>
+        <p>${esc(a.ap3)}</p>
+        <h3>${esc(a.lh)}</h3>
+        <ul>${a.list.map(li => `<li>${esc(li)}</li>`).join("")}</ul>
+        <figure class="s-pull"><p>${esc(a.pq)}</p></figure>
+        <h2>${esc(a.ah2)}</h2>
+        <p>${esc(a.ap4)}</p>
+        <p>${esc(a.ap5)}</p>
+      </article>`;
+    case "quote": return `<section class="s-quote">
+        <blockquote>“${esc(s.q)}”</blockquote><p class="s-cite">${esc(s.qn)}</p>
+      </section>`;
+    default: return `<div class="s-nav"><span class="s-brand">${esc(s.brand)}</span>
+        <span class="s-links">${s.links.map(l => `<span>${esc(l)}</span>`).join("")}</span>
+        <span class="s-btn s-btn-sm">${esc(s.cta)}</span></div>
+      <section class="s-hero"><h1>${esc(s.h)}</h1><p class="s-lead">${esc(s.sub)}</p>
+        <div class="s-actions"><span class="s-btn">${esc(s.cta)}</span><span class="s-btn s-btn-ghost">${esc(s.btn2)}</span></div>
+      </section>`;
+  }
+}
+
+/* ---------- Code output ---------- */
+const trim = n => String(+n.toFixed(4));
+function unit(px, base){
+  if(state.unit === "rem") return trim(px / 16) + "rem";
+  if(state.unit === "em") return trim(px / base) + "em";
+  return px + "px";
+}
+function codeOut(){
+  const bc = FONTS[state.body];
+  const bodyBold = nearest(bc.w, 700);
+  const weights = {};
+  const add = (n, w) => { (weights[n] = weights[n] || new Set()).add(w); };
+  add(state.head, state.hw); add(state.body, nearest(bc.w, 400)); add(state.body, bodyBold);
+  const fams = Object.entries(weights).map(([n, set]) => {
+    const ws = [...set].sort((a,b) => a - b), fam = n.replace(/ /g, "+");
+    return "family=" + ((ws.length === 1 && ws[0] === 400) ? fam : fam + ":wght@" + ws.join(";"));
+  });
+  const url = "https://fonts.googleapis.com/css2?" + fams.join("&") + "&display=swap";
+  const embed = `<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link href="${url}" rel="stylesheet">`;
+  const lh = (bc.c === "r") ? "1.7" : "1.6";
+  const {h1, h2, h3} = scale();
+  // em: body is relative to the 16px browser default, headings are relative to the body size
+  const note = state.unit === "em" ? "/* Heading sizes are relative to the body font size */\n" : "";
+  const css = `body {\n  font-family: ${stack(state.body)};\n  font-size: ${unit(state.size, 16)};\n  line-height: ${lh};\n}\n\n${note}h1, h2, h3 {\n  font-family: ${stack(state.head)};\n  font-weight: ${state.hw};\n  line-height: 1.15;\n}\n\nh1 { font-size: ${unit(h1, state.size)}; }\nh2 { font-size: ${unit(h2, state.size)}; }\nh3 { font-size: ${unit(h3, state.size)}; }\n\nstrong, b {\n  font-weight: ${bodyBold};\n}`;
+  return {embed, css};
+}
+
+/* ---------- Render ---------- */
+function render(){
+  const hf = FONTS[state.head], bf = FONTS[state.body];
+  if(!hf.w.includes(state.hw)) state.hw = nearest(hf.w, state.hw);
+  loadFonts([state.head, state.body]);
+
+  $("head").value = state.head; $("body").value = state.body;
+  $("hw").innerHTML = hf.w.map(w => `<option value="${w}">${WEIGHT_NAMES[w] || ""} ${w}</option>`).join("");
+  $("hw").value = state.hw; $("hw").disabled = hf.w.length === 1;
+  $("set").value = state.set;
+  $("size").value = state.size; $("size-out").textContent = state.size + "px";
+  $("hsize").value = state.hsize; $("hsize-out").textContent = state.hsize + "px";
+  const sc = scale();
+  $("scale-note").textContent = `H1 ${sc.h1}px, H2 ${sc.h2}px, H3 ${sc.h3}px`;
+
+  const site = $("site");
+  site.style.setProperty("--head", stack(state.head));
+  site.style.setProperty("--body", stack(state.body));
+  site.style.setProperty("--hw", state.hw);
+  site.style.setProperty("--bsize", state.size);
+  site.style.setProperty("--blh", (bf.c === "r") ? 1.7 : 1.6);
+  site.style.setProperty("--h1", sc.h1); site.style.setProperty("--h2", sc.h2); site.style.setProperty("--h3", sc.h3);
+  site.setAttribute("aria-labelledby", "tab-" + state.layout);
+  site.innerHTML = siteHTML();
+
+  document.querySelectorAll("#layouts button").forEach(b => {
+    const on = b.dataset.l === state.layout;
+    b.setAttribute("aria-selected", on); b.tabIndex = on ? 0 : -1;
+  });
+  document.querySelectorAll("#units button").forEach(b => b.setAttribute("aria-pressed", b.dataset.u === state.unit));
+
+  const pickIndex = PICKS.findIndex(p => p.head === state.head && p.body === state.body);
+  document.querySelectorAll(".pick").forEach(b => b.setAttribute("aria-pressed", +b.dataset.i === pickIndex));
+  const p = PICKS[pickIndex];
+  const hName = `<dd class="now-name" style="font-family:${esc(stack(state.head))};font-weight:${state.hw}">${esc(state.head)}</dd>`;
+  const bName = `<dd class="now-name is-body" style="font-family:${esc(stack(state.body))}">${esc(state.body)}</dd>`;
+  $("note").innerHTML = `<div>
+      <span class="now-label">Now viewing</span>
+      <dl class="now-fonts">
+        <dt class="now-role">Heading</dt>${hName}
+        <dt class="now-role">Body</dt>${bName}
+      </dl>
+    </div>
+    <div>${p
+      ? `<span class="note-for">Adam's Pick for ${esc(p.for.charAt(0).toLowerCase() + p.for.slice(1))}</span><p class="note-text">${esc(p.note)}</p>`
+      : `<span class="note-for">Custom pairing</span><p class="note-text">Pairings usually work best when the two fonts are clearly different, like a serif with a sans-serif, or when you stay within one family and lean on size and weight for contrast.</p>`}</div>`;
+
+  const {embed, css} = codeOut();
+  $("embed").textContent = embed; $("css").textContent = css;
+
+  try {
+    const q = new URLSearchParams({h:state.head, b:state.body, w:state.hw, s:state.set, z:state.size, hs:state.hsize});
+    history.replaceState(null, "", "#" + q.toString());
+  } catch(e){}
+}
+
+/* ---------- Copy ---------- */
+function toast(msg){ const t = $("toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove("show"), 1600); }
+async function copyText(text){
+  try { await navigator.clipboard.writeText(text); return true; }
+  catch(e){
+    const ta = document.createElement("textarea"); ta.value = text; ta.setAttribute("readonly",""); ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    let ok = false; try { ok = document.execCommand("copy"); } catch(_){}
+    ta.remove(); return ok;
+  }
+}
+
+/* ---------- Init ---------- */
+async function init(){
+  $("yr").textContent = new Date().getFullYear();
+  fillFontSelects();
+  $("set").innerHTML = Object.entries(SETS).map(([k, s]) => `<option value="${k}">${esc(s.label)}</option>`).join("");
+  try {
+    const q = new URLSearchParams(location.hash.slice(1));
+    const h = q.get("h"), b = q.get("b");
+    if(FONTS[h]) state.head = h;
+    if(FONTS[b]) state.body = b;
+    if(+q.get("w")) state.hw = +q.get("w");
+    if(SETS[q.get("s")]) state.set = q.get("s");
+    const z = +q.get("z"); if(z >= 15 && z <= 20) state.size = z;
+    const hs = +q.get("hs"); if(hs >= 32 && hs <= 80) state.hsize = hs;
+  } catch(e){}
+
+  loadFonts(PICKS.flatMap(p => [p.head, p.body]));
+  buildPicks(); buildLayouts();
+
+  $("head").addEventListener("change", e => { state.head = e.target.value; render(); });
+  $("body").addEventListener("change", e => { state.body = e.target.value; render(); });
+  $("hw").addEventListener("change", e => { state.hw = +e.target.value; render(); });
+  $("set").addEventListener("change", e => { state.set = e.target.value; render(); });
+  $("size").addEventListener("input", e => { state.size = +e.target.value; render(); });
+  $("hsize").addEventListener("input", e => { state.hsize = +e.target.value; render(); });
+  $("swap").addEventListener("click", () => { [state.head, state.body] = [state.body, state.head]; render(); });
+  $("units").addEventListener("click", e => { const b = e.target.closest("button"); if(!b) return; state.unit = b.dataset.u; render(); });
+  document.querySelectorAll("[data-copy]").forEach(b => b.addEventListener("click", async () => {
+    const ok = await copyText($(b.dataset.copy).textContent);
+    toast(ok ? "Copied to clipboard" : "Select the code and copy it manually");
+  }));
+  render();
+}
+init();
+</script>
+</body>
+</html>
