@@ -45,7 +45,8 @@ button,input,select{font:inherit;color:inherit}
 /* Layout */
 .app{display:grid;grid-template-columns:340px minmax(0,1fr);gap:24px;align-items:start;padding:28px 0 40px}
 @media (min-width:961px) and (min-height:860px){.app aside{position:sticky;top:16px}}
-@media (max-width:960px){.app{grid-template-columns:1fr}}
+.app > *{min-width:0}
+@media (max-width:960px){.app{grid-template-columns:minmax(0,1fr)}}
 .panel{background:var(--white);border:1px solid var(--light);border-radius:var(--radius);padding:20px}
 .panel + .panel{margin-top:16px}
 .panel h2{font:700 22px/1.15 var(--heading);margin:0 0 4px;color:var(--dark)}
